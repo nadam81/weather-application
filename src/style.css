@@ -43,6 +43,7 @@ video {
 }
 .column1 {
   flex-shrink: 0;
+  max-width: 300px;
 }
 .cityResult {
   font-size: 35px;

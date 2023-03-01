@@ -105,8 +105,6 @@ function currentPosition(response) {
 
 // Show the current Temp both in Cº and Fº
 function showWeather(response) {
-  console.log(response);
-  console.log(response.data.condition.icon_url);
   let cityCurrentTemp = Math.round(response.data.temperature.current);
   tempNumber.innerHTML = cityCurrentTemp;
   let tempNumberF = (cityCurrentTemp * 9) / 5 + 32;

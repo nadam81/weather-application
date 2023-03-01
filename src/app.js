@@ -16,6 +16,33 @@ let months = [
   "Nov.",
   "Dec.",
 ];
+let month = months[now.getMonth()];
+
+let nowPlus1 = new Date();
+nowPlus1.setDate(nowPlus1.getDate() + 1);
+let day2 = days[nowPlus1.getDay()];
+let date2 = nowPlus1.getDate();
+
+let nowPlus2 = new Date();
+nowPlus2.setDate(nowPlus2.getDate() + 2);
+let day3 = days[nowPlus2.getDay()];
+let date3 = nowPlus2.getDate();
+
+let nowPlus3 = new Date();
+nowPlus3.setDate(nowPlus3.getDate() + 3);
+let day4 = days[nowPlus3.getDay()];
+let date4 = nowPlus3.getDate();
+
+let nowPlus4 = new Date();
+nowPlus4.setDate(nowPlus4.getDate() + 4);
+let day5 = days[nowPlus4.getDay()];
+let date5 = nowPlus4.getDate();
+
+let nowPlus5 = new Date();
+nowPlus5.setDate(nowPlus5.getDate() + 5);
+let day6 = days[nowPlus5.getDay()];
+let date6 = nowPlus5.getDate();
+
 let apiKey = "aed005a0bfto11950d353cd8148e9ec7";
 let btnCurrent = document.querySelector("#btn-current");
 let cityForm = document.querySelector("#city-search");
@@ -29,19 +56,53 @@ let london = document.querySelector("#london");
 let madrid = document.querySelector("#madrid");
 let minute = now.getMinutes();
 let fullHour = hour + ":" + minute;
-let month = months[now.getMonth()];
 let paris = document.querySelector("#paris");
 let tempNumber = document.querySelector(".tempNumber");
 let todayDay = document.querySelector("#today-day");
 let weatherDescription = document.querySelector("#weather-description");
 let wind = document.querySelector("#wind-value");
 let weatherIconToday = document.querySelector("#weather-icon-today");
+let day2input = document.querySelector(".day2");
+let day3input = document.querySelector(".day3");
+let day4input = document.querySelector(".day4");
+let day5input = document.querySelector(".day5");
+let day6input = document.querySelector(".day6");
 
-// Mise en forme date
+// Mise en forme date Today
 function todayDate(day, date, month) {
   todayDay.innerHTML = day + " " + date + " " + month;
 }
 todayDate(day, date, month);
+
+// // Mise en forme date Today+1
+function dateDay2(day, date) {
+  day2input.innerHTML = day + " " + date;
+}
+dateDay2(day2, date2);
+
+// // Mise en forme date Today+2
+function dateDay3(day, date) {
+  day3input.innerHTML = day + " " + date;
+}
+dateDay3(day3, date3);
+
+// // Mise en forme date Today+3
+function dateDay4(day, date) {
+  day4input.innerHTML = day + " " + date;
+}
+dateDay4(day4, date4);
+
+// // Mise en forme date Today+4
+function dateDay5(day, date) {
+  day5input.innerHTML = day + " " + date;
+}
+dateDay5(day5, date5);
+
+// // Mise en forme date Today+5
+function dateDay6(day, date) {
+  day6input.innerHTML = day + " " + date;
+}
+dateDay6(day6, date6);
 
 // Mise en forme hour
 function todayHours(fullHour) {
@@ -64,7 +125,7 @@ getPosition();
 function showParis() {
   let city = "Paris";
   let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-  axios.get(cityUrl).then(showWeather);
+  axios.get(cityUrl).then(showWeatherNow);
   axios.get(cityUrl).then(showCityName);
 }
 
@@ -72,7 +133,7 @@ function showParis() {
 function showLondon(event) {
   let city = "London";
   let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-  axios.get(cityUrl).then(showWeather);
+  axios.get(cityUrl).then(showWeatherNow);
   axios.get(cityUrl).then(showCityName);
 }
 
@@ -80,7 +141,7 @@ function showLondon(event) {
 function showMadrid() {
   let city = "Madrid";
   let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-  axios.get(cityUrl).then(showWeather);
+  axios.get(cityUrl).then(showWeatherNow);
   axios.get(cityUrl).then(showCityName);
 }
 
@@ -90,7 +151,7 @@ function showSearch(event) {
   let city = cityInput.value;
   city = city.trim();
   let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-  axios.get(cityUrl).then(showWeather);
+  axios.get(cityUrl).then(showWeatherNow);
   axios.get(cityUrl).then(showCityName);
 }
 
@@ -99,12 +160,12 @@ function currentPosition(response) {
   let lon = response.coords.longitude;
   let lat = response.coords.latitude;
   let currentUrlTemp = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
-  axios.get(currentUrlTemp).then(showWeather);
+  axios.get(currentUrlTemp).then(showWeatherNow);
   axios.get(currentUrlTemp).then(showCityName);
 }
 
 // Show the current Temp both in Cº and Fº
-function showWeather(response) {
+function showWeatherNow(response) {
   let cityCurrentTemp = Math.round(response.data.temperature.current);
   tempNumber.innerHTML = cityCurrentTemp;
   let tempNumberF = (cityCurrentTemp * 9) / 5 + 32;

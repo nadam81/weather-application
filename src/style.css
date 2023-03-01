@@ -92,6 +92,10 @@ video {
 .day5 {
   font-weight: bold;
 }
+.openSourceLink {
+  color: blue;
+  text-decoration: underline;
+}
 #degreeC {
   font-weight: bolder;
 }

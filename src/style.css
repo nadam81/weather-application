@@ -96,6 +96,10 @@ video {
   color: blue;
   text-decoration: underline;
 }
+
+.btn-warning {
+  margin: 0 5px;
+}
 #degreeC {
   font-weight: bolder;
 }
@@ -109,6 +113,6 @@ video {
   cursor: pointer;
 }
 
-.btn-warning {
-  margin: 0 5px;
+#weather-description {
+  font-style: italic;
 }

@@ -102,7 +102,7 @@ function currentPosition(response) {
   let currentLatitude = response.coords.latitude;
   let currentUrlTemp = `https://api.openweathermap.org/data/2.5/weather?lat=${currentLatitude}&lon=${currentLongitude}&appid=${apiKey}&units=metric`;
   axios.get(currentUrlTemp).then(showWeather);
-  let currentCityNameUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${currentLatitude}&lon=${currentLongitude}&appid=${apiKey}`;
+  let currentCityNameUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${currentLatitude}&lon=${currentLongitude}&appid=${apiKey}`;
   axios.get(currentCityNameUrl).then(showCurrentCityName);
 }
 

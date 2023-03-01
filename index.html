@@ -24,98 +24,100 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   </head>
   <body>
-    <nav class="navbar bg-dark" data-bs-theme="dark">
-      <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" id="paris">Paris</a>
-          <a class="navbar-brand" id="london">London</a>
-          <a class="navbar-brand" id="madrid">Madrid</a>
-          <form class="d-flex" role="search" id="city-search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              id="city-input"
-            />
-            <button class="btn btn-light" type="submit">Search</button>
-            <button class="btn btn-warning" type="button" id="btn-current">
-              Current
-            </button>
-          </form>
-        </div>
+    <div class="cadre">
+      <nav class="navbar bg-dark" data-bs-theme="dark" id="navbar">
+        <nav class="navbar bg-body-tertiary">
+          <div class="container-fluid">
+            <a class="navbar-brand" id="paris">Paris</a>
+            <a class="navbar-brand" id="london">London</a>
+            <a class="navbar-brand" id="madrid">Madrid</a>
+            <form class="d-flex" role="search" id="city-search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                id="city-input"
+              />
+              <button class="btn btn-light" type="submit">Search</button>
+              <button class="btn btn-warning" type="button" id="btn-current">
+                Current
+              </button>
+            </form>
+          </div>
+        </nav>
       </nav>
-    </nav>
 
-    <div class="flex-container">
-      <div class="column1">
-        <div class="cityResult"></div>
-        <div id="weather-description"></div>
-        <div class="todayDate" id="today-day"></div>
-        <div class="todayDate" id="today-hour"></div>
-      </div>
-      <div class="column2">
-        <div class="emojiDayToday">
-          <img src="#" alt="" id="weather-icon-today" />
+      <div class="flex-container">
+        <div class="column1">
+          <div class="cityResult"></div>
+          <div id="weather-description"></div>
+          <div class="todayDate" id="today-day"></div>
+          <div class="todayDate" id="today-hour"></div>
         </div>
-        <div class="tempToday">
-          <span class="tempNumber"></span>
+        <div class="column2">
+          <div class="emojiDayToday">
+            <img src="#" alt="" id="weather-icon-today" />
+          </div>
+          <div class="tempToday">
+            <span class="tempNumber"></span>
 
-          <span class="units">
-            <a href="" id="degreeC">ºC</a> |
-            <a href="" id="degreeF">ºF</a></span
-          >
+            <span class="units">
+              <a href="" id="degreeC">ºC</a> |
+              <a href="" id="degreeF">ºF</a></span
+            >
+          </div>
+        </div>
+        <div class="columnempty"></div>
+        <div class="columnempty"></div>
+        <div class="column3">
+          <div class="rain">humidity</div>
+          <div class="rainResult" id="humidity-value"></div>
+        </div>
+        <div class="column4">
+          <div class="wind">Wind</div>
+          <div class="windResult" id="wind-value"></div>
         </div>
       </div>
-      <div class="columnempty"></div>
-      <div class="columnempty"></div>
-      <div class="column3">
-        <div class="rain">humidity</div>
-        <div class="rainResult" id="humidity-value"></div>
+      <hr />
+      <div class="flex2-container">
+        <div class="column2-1">
+          <div class="followingDays day2">tue. 6</div>
+          <div class="emojiDay2">⛅️</div>
+          <div class="tempDay2">4º/15º</div>
+        </div>
+        <div class="column2-2">
+          <div class="followingDays day3">wed. 7</div>
+          <div class="emojiDay3">🌦</div>
+          <div class="tempDay3">4º/14º</div>
+        </div>
+        <div class="column2-3">
+          <div class="followingDays day4">thu. 8</div>
+          <div class="emojiDay4">⛈</div>
+          <div class="tempDay4">6º/16º</div>
+        </div>
+        <div class="column2-4">
+          <div class="followingDays day5">fri. 9</div>
+          <div class="emojiDay5">🌤</div>
+          <div class="tempDay5">4º/14º</div>
+        </div>
+        <div class="column2-5">
+          <div class="followingDays day6">sat. 10</div>
+          <div class="emojiDay6">☀️</div>
+          <div class="tempDay6">7º/18º</div>
+        </div>
       </div>
-      <div class="column4">
-        <div class="wind">Wind</div>
-        <div class="windResult" id="wind-value"></div>
-      </div>
+      <hr />
+      <p>
+        <a
+          href="https://github.com/nadam81/weather-application"
+          target="_blank"
+          class="openSourceLink"
+          >Open-source code</a
+        >
+        by Nancy Adam
+      </p>
     </div>
-    <hr />
-    <div class="flex2-container">
-      <div class="column2-1">
-        <div class="followingDays day2">tue. 6</div>
-        <div class="emojiDay2">⛅️</div>
-        <div class="tempDay2">4º/15º</div>
-      </div>
-      <div class="column2-2">
-        <div class="followingDays day3">wed. 7</div>
-        <div class="emojiDay3">🌦</div>
-        <div class="tempDay3">4º/14º</div>
-      </div>
-      <div class="column2-3">
-        <div class="followingDays day4">thu. 8</div>
-        <div class="emojiDay4">⛈</div>
-        <div class="tempDay4">6º/16º</div>
-      </div>
-      <div class="column2-4">
-        <div class="followingDays day5">fri. 9</div>
-        <div class="emojiDay5">🌤</div>
-        <div class="tempDay5">4º/14º</div>
-      </div>
-      <div class="column2-5">
-        <div class="followingDays day6">sat. 10</div>
-        <div class="emojiDay6">☀️</div>
-        <div class="tempDay6">7º/18º</div>
-      </div>
-    </div>
-    <hr />
-    <p>
-      <a
-        href="https://github.com/nadam81/weather-application"
-        target="_blank"
-        class="openSourceLink"
-        >Open-source code</a
-      >
-      by Nancy Adam
-    </p>
     <script src="src/app.js"></script>
   </body>
 </html>

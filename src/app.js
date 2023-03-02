@@ -67,6 +67,21 @@ let day3input = document.querySelector(".day3");
 let day4input = document.querySelector(".day4");
 let day5input = document.querySelector(".day5");
 let day6input = document.querySelector(".day6");
+let tempDay2Low = document.querySelector("#tempDay2-low");
+let tempDay2High = document.querySelector("#tempDay2-high");
+let tempDay3Low = document.querySelector("#tempDay3-low");
+let tempDay3High = document.querySelector("#tempDay3-high");
+let tempDay4Low = document.querySelector("#tempDay4-low");
+let tempDay4High = document.querySelector("#tempDay4-high");
+let tempDay5Low = document.querySelector("#tempDay5-low");
+let tempDay5High = document.querySelector("#tempDay5-high");
+let tempDay6Low = document.querySelector("#tempDay6-low");
+let tempDay6High = document.querySelector("#tempDay6-high");
+let weatherIconDay2 = document.querySelector("#weather-icon-day2");
+let weatherIconDay3 = document.querySelector("#weather-icon-day3");
+let weatherIconDay4 = document.querySelector("#weather-icon-day4");
+let weatherIconDay5 = document.querySelector("#weather-icon-day5");
+let weatherIconDay6 = document.querySelector("#weather-icon-day6");
 
 // Mise en forme date Today
 function todayDate(day, date, month) {
@@ -74,31 +89,31 @@ function todayDate(day, date, month) {
 }
 todayDate(day, date, month);
 
-// // Mise en forme date Today+1
+// // Mise en forme date day2
 function dateDay2(day, date) {
   day2input.innerHTML = day + " " + date;
 }
 dateDay2(day2, date2);
 
-// // Mise en forme date Today+2
+// // Mise en forme date day3
 function dateDay3(day, date) {
   day3input.innerHTML = day + " " + date;
 }
 dateDay3(day3, date3);
 
-// // Mise en forme date Today+3
+// // Mise en forme date day4
 function dateDay4(day, date) {
   day4input.innerHTML = day + " " + date;
 }
 dateDay4(day4, date4);
 
-// // Mise en forme date Today+4
+// // Mise en forme date day5
 function dateDay5(day, date) {
   day5input.innerHTML = day + " " + date;
 }
 dateDay5(day5, date5);
 
-// // Mise en forme date Today+5
+// // Mise en forme date day6
 function dateDay6(day, date) {
   day6input.innerHTML = day + " " + date;
 }
@@ -125,24 +140,30 @@ getPosition();
 function showParis() {
   let city = "Paris";
   let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  let cityForecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(cityUrl).then(showWeatherNow);
   axios.get(cityUrl).then(showCityName);
+  axios.get(cityForecastUrl).then(showForecastTemperatures);
 }
 
 // Pour les résultats de London
 function showLondon(event) {
   let city = "London";
   let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  let cityForecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(cityUrl).then(showWeatherNow);
   axios.get(cityUrl).then(showCityName);
+  axios.get(cityForecastUrl).then(showForecastTemperatures);
 }
 
 // Pour les résultats de Madrid
 function showMadrid() {
   let city = "Madrid";
   let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  let cityForecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(cityUrl).then(showWeatherNow);
   axios.get(cityUrl).then(showCityName);
+  axios.get(cityForecastUrl).then(showForecastTemperatures);
 }
 
 // Pour les résultats de search
@@ -151,8 +172,10 @@ function showSearch(event) {
   let city = cityInput.value;
   city = city.trim();
   let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  let cityForecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(cityUrl).then(showWeatherNow);
   axios.get(cityUrl).then(showCityName);
+  axios.get(cityForecastUrl).then(showForecastTemperatures);
 }
 
 // bouton Current ou landing page
@@ -160,8 +183,10 @@ function currentPosition(response) {
   let lon = response.coords.longitude;
   let lat = response.coords.latitude;
   let currentUrlTemp = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
+  let currentForecastUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
   axios.get(currentUrlTemp).then(showWeatherNow);
   axios.get(currentUrlTemp).then(showCityName);
+  axios.get(currentForecastUrl).then(showForecastTemperatures);
 }
 
 // Show the current Temp both in Cº and Fº
@@ -201,6 +226,48 @@ function showCurrentCityName(response) {
 // CityName for Search and listed countries
 function showCityName(response) {
   cityResult.innerHTML = response.data.city;
+}
+
+function showForecastTemperatures(response) {
+  console.log(response);
+  tempDay2Low.innerHTML = Math.round(
+    response.data.daily[0].temperature.minimum
+  );
+  tempDay2High.innerHTML = Math.round(
+    response.data.daily[0].temperature.maximum
+  );
+  weatherIconDay2.src = response.data.daily[0].condition.icon_url;
+
+  tempDay3Low.innerHTML = Math.round(
+    response.data.daily[1].temperature.minimum
+  );
+  tempDay3High.innerHTML = Math.round(
+    response.data.daily[1].temperature.maximum
+  );
+  weatherIconDay3.src = response.data.daily[1].condition.icon_url;
+  tempDay4Low.innerHTML = Math.round(
+    response.data.daily[2].temperature.minimum
+  );
+  tempDay4High.innerHTML = Math.round(
+    response.data.daily[2].temperature.maximum
+  );
+  weatherIconDay4.src = response.data.daily[2].condition.icon_url;
+
+  tempDay5Low.innerHTML = Math.round(
+    response.data.daily[3].temperature.minimum
+  );
+  tempDay5High.innerHTML = Math.round(
+    response.data.daily[3].temperature.maximum
+  );
+  weatherIconDay5.src = response.data.daily[3].condition.icon_url;
+
+  tempDay6Low.innerHTML = Math.round(
+    response.data.daily[4].temperature.minimum
+  );
+  tempDay6High.innerHTML = Math.round(
+    response.data.daily[4].temperature.maximum
+  );
+  weatherIconDay6.src = response.data.daily[4].condition.icon_url;
 }
 
 // When click on Paris

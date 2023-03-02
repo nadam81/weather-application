@@ -61,7 +61,7 @@ video {
   text-align: center;
 }
 .emojiDayToday {
-  font-size: 70px;
+  width: 70px;
 }
 .tempToday {
   font-size: 25px;
@@ -107,6 +107,13 @@ video {
 
 .btn-warning {
   margin: 0 5px;
+}
+#weather-icon-day2,
+#weather-icon-day3,
+#weather-icon-day4,
+#weather-icon-day5,
+#weather-icon-day6 {
+  width: 40px;
 }
 #navbar {
   margin: 15px 0 0 0;

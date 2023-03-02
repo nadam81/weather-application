@@ -133,10 +133,23 @@ video {
   color: gray;
 }
 
-#paris,
-#london,
-#madrid {
+#city1,
+#city2,
+#city3 #city4 {
   cursor: pointer;
+}
+#city1:hover {
+  /* font-weight: bolder; */
+  color: #ffca2c;
+}
+#city2:hover {
+  color: #ffca2c;
+}
+#city3:hover {
+  color: #ffca2c;
+}
+#city4:hover {
+  color: #ffca2c;
 }
 
 #weather-description {

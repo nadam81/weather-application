@@ -52,11 +52,12 @@ let degreeC = document.querySelector("#degreeC");
 let degreeF = document.querySelector("#degreeF");
 let hour = now.getHours();
 let humidity = document.querySelector("#humidity-value");
-let london = document.querySelector("#london");
-let madrid = document.querySelector("#madrid");
+let city1 = document.querySelector("#city1");
+let city2 = document.querySelector("#city2");
+let city3 = document.querySelector("#city3");
+let city4 = document.querySelector("#city4");
 let minute = now.getMinutes();
 let fullHour = hour + ":" + minute;
-let paris = document.querySelector("#paris");
 let tempNumber = document.querySelector(".tempNumber");
 let todayDay = document.querySelector("#today-day");
 let weatherDescription = document.querySelector("#weather-description");
@@ -136,9 +137,9 @@ function getPosition() {
 }
 getPosition();
 
-// Pour les résultats de Paris
-function showParis() {
-  let city = "Paris";
+// Pour les résultats de city1
+function showCity1() {
+  let city = city1.innerHTML;
   let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   let cityForecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(cityUrl).then(showWeatherNow);
@@ -146,9 +147,9 @@ function showParis() {
   axios.get(cityForecastUrl).then(showForecastTemperatures);
 }
 
-// Pour les résultats de London
-function showLondon(event) {
-  let city = "London";
+// Pour les résultats de city2
+function showCity2() {
+  let city = city2.innerHTML;
   let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   let cityForecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(cityUrl).then(showWeatherNow);
@@ -156,9 +157,19 @@ function showLondon(event) {
   axios.get(cityForecastUrl).then(showForecastTemperatures);
 }
 
-// Pour les résultats de Madrid
-function showMadrid() {
-  let city = "Madrid";
+// Pour les résultats de city3
+function showCity3() {
+  let city = city3.innerHTML;
+  let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  let cityForecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(cityUrl).then(showWeatherNow);
+  axios.get(cityUrl).then(showCityName);
+  axios.get(cityForecastUrl).then(showForecastTemperatures);
+}
+
+// Pour les résultats de city4
+function showCity4() {
+  let city = city4.innerHTML;
   let cityUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   let cityForecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(cityUrl).then(showWeatherNow);
@@ -270,14 +281,17 @@ function showForecastTemperatures(response) {
   weatherIconDay6.src = response.data.daily[4].condition.icon_url;
 }
 
-// When click on Paris
-paris.addEventListener("click", showParis);
+// When click on city1
+city1.addEventListener("click", showCity1);
 
-// When click on London
-london.addEventListener("click", showLondon);
+// When click on city2
+city2.addEventListener("click", showCity2);
 
-// When click on Madrid
-madrid.addEventListener("click", showMadrid);
+// When click on city3
+city3.addEventListener("click", showCity3);
+
+// When click on city4
+city4.addEventListener("click", showCity4);
 
 // When click on Current Button
 btnCurrent.addEventListener("click", getPosition);

@@ -107,6 +107,7 @@ video {
 
 .btn-warning {
   margin: 0 5px;
+  width: 300px;
 }
 #weather-icon-day2,
 #weather-icon-day3,
